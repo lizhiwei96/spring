@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--允许注解驱动  在spring3之前需要开启注解配置，之后context:component-scan 将这个进行了结合，后面只需写一个包扫描即可-->
+<!--    <context:annotation-config></context:annotation-config>-->
+    <!--指定包扫描的路径-->  <!--注解和配置文件可以结合使用-->
+<!--    <context:component-scan base-package="com"></context:component-scan>-->
+    <bean id="dao" class="com.test.ioc.dao.impl.HelloDaoImpl"></bean>
+
+    <bean id="dao1" class="com.test.ioc.dao.impl.HelloDaoImpl1"></bean>
+    <!--c就是constructor，而p就是property-->
+    <!---->
+    <bean id="helloService" class="com.test.ioc.service.HelloService"  p:str="test str">
+        <!--settet注入  这个name是指定的set方法名后面的东西-->
+        <property name="helloDao" ref="dao"></property>
+        <!--构造方法注入-->
+<!--        <constructor-arg ref="helloDao"></constructor-arg>-->
+    </bean>
+</beans>

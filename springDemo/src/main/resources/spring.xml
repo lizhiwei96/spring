@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans default-autowire="byType"><!--手动装配优先于自动装配-->
+
+    <bean id="userDao" class="com.spring.dao.impl.UserDaoImpl"></bean>
+
+    <bean id="userDao1" class="com.spring.dao.impl.UserDaoImpl1"></bean>
+
+    <bean id="userService" class="com.spring.service.impl.UserServiceImpl">
+        <property name="userDao" ref="userDao"></property>
+<!--        <constructor-arg ref="userDao"></constructor-arg>-->
+    </bean>
+</beans>
